@@ -11,7 +11,13 @@ require("./entities");
 const app = express();
 
 // Middlewares globales
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "x-user-rol"],
+  })
+);
 app.use(express.json());
 
 // Documentación Swagger / OpenAPI
